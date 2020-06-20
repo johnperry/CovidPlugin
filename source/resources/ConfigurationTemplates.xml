@@ -1,0 +1,25 @@
+<TemplateDefinitions>
+
+	<Components>
+
+		<Plugin>
+			<attr name="name" required="yes" default="CovidPlugin"/>
+			<attr name="class" required="yes" default="org.covid.CovidPlugin" editable="no"/>
+			<attr name="id" required="yes" default="CovidPlugin"/>
+			<attr name="root" required="yes" default="roots/CovidPlugin"/>
+		</Plugin>
+
+		<StorageService>
+			<attr name="name" required="yes" default="CovidStorageService"/>
+			<attr name="class" required="yes" default="org.covid.CovidStorageService" editable="no"/>
+			<attr name="id" required="yes" default="CovidStorageService"/>
+			<attr name="root" required="yes" default="roots/CovidStorageService"/>
+			<attr name="returnStoredFile" required="no" default="no" options="yes|no"/>
+			<attr name="quarantine" required="no" default="quarantines/CovidStorageService"/>
+			<attr name="quarantineTimeDepth" required="no" default="0"/>
+		</StorageService>
+		
+	</Components>
+
+</TemplateDefinitions>
+
