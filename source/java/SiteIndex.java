@@ -19,6 +19,7 @@ public class SiteIndex {
 	static SiteIndex instance = null;
 	static final String filename = "SiteIndex.xml";
 	File indexFile = null;
+	long lastModified = 0;
 	Document indexXML = null;
 	Element root = null;
 	
@@ -31,16 +32,28 @@ public class SiteIndex {
 			indexXML.appendChild(root);
 			save();
 		}
-		else {
+		else load();
+	}
+	
+	private void load() {
+		try {
 			indexXML = XmlUtil.getDocument(indexFile);
 			root = indexXML.getDocumentElement();
+			lastModified = indexFile.lastModified();
 		}
+		catch (Exception ex) {
+			logger.warn("Unable to parse the site index", ex);
+		}
+	}
+	
+	private boolean isStale() {
+		return (indexFile.lastModified() - lastModified) > 1000;
 	}
 	
 	/**
 	 * Get the singleton instance, creating it only if it does not exist.
-	 * @param indexFile the file of the site
-	 * @return true if the site exists in the index; false otherwise
+	 * @param indexFile the XML file containing the site index
+	 * @return the instance
 	 */
 	public static SiteIndex getInstance(File indexDir) {
 		if (instance == null) {
@@ -67,7 +80,8 @@ public class SiteIndex {
 	 * @param email the email address
 	 * @param siteName the name of the site
 	 */
-	public void add(String siteID, String email, String sitename, String username) {
+	public void add(String siteID, String username, String email, String phone, String sitename, String adrs1, String adrs2, String adrs3) {
+		if (isStale()) load();
 		Element site = null;
 		Node child = root.getFirstChild();
 		while (child != null) {
@@ -86,9 +100,13 @@ public class SiteIndex {
 			site.setAttribute("id", siteID);
 			root.appendChild(site);
 		}
-		site.setAttribute("email", email);
-		site.setAttribute("site", sitename);
 		site.setAttribute("user", username);
+		site.setAttribute("email", email);
+		site.setAttribute("phone", phone);
+		site.setAttribute("site", sitename);
+		site.setAttribute("adrs1", adrs1);
+		site.setAttribute("adrs2", adrs2);
+		site.setAttribute("adrs3", adrs3);
 		save();
 	}
 
@@ -98,6 +116,7 @@ public class SiteIndex {
 	 * @return true if the site exists in the index; false otherwise
 	 */
 	public boolean contains(String siteID) {
+		if (isStale()) load();
 		Node child = root.getFirstChild();
 		while (child != null) {
 			if (child instanceof Element) {
@@ -117,10 +136,12 @@ public class SiteIndex {
 	 * @return the index
 	 */
 	public Document getXML() {
+		if (isStale()) load();
 		return indexXML;
 	}
 	
 	private synchronized void save() {
 		FileUtil.setText(indexFile, XmlUtil.toPrettyString(indexXML));
+		lastModified = indexFile.lastModified();
 	}
 }

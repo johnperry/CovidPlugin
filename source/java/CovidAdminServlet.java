@@ -74,13 +74,17 @@ public class CovidAdminServlet extends Servlet {
 		else if ((path.length() == 2) && path.element(1).equals("create")) {
 			//This is the creation of a new site or the update of an old one
 			String siteID = req.getParameter("siteID", "").trim();
-			String email = req.getParameter("email", "").trim();
-			String sitename = req.getParameter("sitename", "").trim();
 			String username = req.getParameter("username", "").trim();
+			String email = req.getParameter("email", "").trim();
+			String phone = req.getParameter("phone", "").trim();
+			String sitename = req.getParameter("sitename", "").trim();
+			String adrs1 = req.getParameter("adrs1", "").trim();
+			String adrs2 = req.getParameter("adrs2", "").trim();
+			String adrs3 = req.getParameter("adrs3", "").trim();
 			
 			if ((siteID.length() == 6) && siteID.matches("\\d{6}")
 						&& (email.length() > 0) && isValid(email)) {
-				index.add(siteID, email, sitename, username);
+				index.add(siteID, username, email, phone, sitename, adrs1, adrs2, adrs3);
 				res.setResponseCode(res.ok);
 			}
 			else res.setResponseCode(res.notfound);

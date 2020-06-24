@@ -9,26 +9,48 @@
 			<link rel="Stylesheet" type="text/css" media="all" href="/BaseStyles.css"></link>
 			<style>
 				th {padding-left:20px; padding-right:20px; font-family:sans-serif; font-size:18pt; text-align:left;}
-				td {padding-left:20px; padding-right:20px; font-family:monospace; font-size:18pt; text-align:left;}
+				td {padding-left:20px; padding-right:20px; font-family:monospace; font-size:18pt; text-align:left; vertical-align:top;}
 			</style>
 		</head>
 		<body>
 		<center>
 			<h1>QIC Site List</h1>
 			<p>
-			<table border="0">
+			<table border="1">
 				<tr>
 					<th>Site ID</th>
-					<th>Email</th>
 					<th>Site</th>
 					<th>User</th>
 				</tr>
 				<xsl:for-each select="Site">
 					<tr>
 						<td><xsl:value-of select="@id"/></td>
-						<td><xsl:value-of select="@email"/></td>
-						<td><xsl:value-of select="@site"/></td>
-						<td><xsl:value-of select="@user"/></td>
+						<td>
+							<xsl:value-of select="@site"/>
+							<xsl:if test="@adrs1">
+								<br/>
+								<xsl:value-of select="@adrs1"/>
+							</xsl:if>
+							<xsl:if test="@adrs2">
+								<br/>
+								<xsl:value-of select="@adrs2"/>
+							</xsl:if>
+							<xsl:if test="@adrs3">
+								<br/>
+								<xsl:value-of select="@adrs3"/>
+							</xsl:if>
+						</td>
+						<td>
+							<xsl:value-of select="@user"/>
+							<xsl:if test="@email">
+								<br/>
+								<xsl:value-of select="@email"/>
+							</xsl:if>
+							<xsl:if test="@phone">
+								<br/>
+								<xsl:value-of select="@phone"/>
+							</xsl:if>
+						</td>
 					</tr>
 				</xsl:for-each>
 			</table>
