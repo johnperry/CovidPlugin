@@ -256,14 +256,3 @@ public class CovidServlet extends Servlet {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-

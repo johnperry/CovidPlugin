@@ -1,0 +1,71 @@
+body {
+	background-color: white;
+}
+
+h1 {
+	color:black; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20pt;
+	padding-top: 0px;
+	margin-top: 0px;
+}
+h2 {
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14pt;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+p.centered {
+	width: 90%; text-align:center;
+	margin-bottom: 20px;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+table.home {
+	 border: 0; width: 85%;
+}
+table.home td {
+	vertical-align: top;
+	padding-bottom: 20px;
+}
+
+table.ptlist th {
+	background-color: #4472c4;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;	
+	padding: 4px;
+	width: 100px;
+}
+table.ptlist tr:nth-child(even) {
+	background-color: #cfd5ea;
+}
+table.ptlist tr:nth-child(odd) {
+	background-color: #e9ebf5;
+}
+table.ptlist td {
+	padding: 4px;
+}
+table.ptlist td.center {
+	text-align: center;
+}
+
+table.studylist th {
+	background-color: #4472c4;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;	
+	padding: 4px;
+	width: 100px;
+}
+table.studylist td {
+	padding: 4px;
+}
+table.studylist td.center {
+	text-align: center;
+}

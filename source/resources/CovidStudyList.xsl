@@ -11,17 +11,24 @@
 	<html>
 		<head>
 			<title>QIC - Study List</title>
-			<link rel="Stylesheet" type="text/css" media="all" href="/BaseStyles.css"></link>
+			<link rel="Stylesheet" type="text/css" media="all" href="/qicstyles.css"></link>
 			<style>
 				table {margin:0px; padding:0px;}
 				td {padding:0px; vertical-align:top; font-family:sans-serif; padding-right:10px;}
 			</style>
 		</head>
 		<body>
+		<a href="/qic"><h2>Open-QIC</h2></a>
 		<center>
 			<h1>QIC Study List for <xsl:value-of select="@name"/></h1>
 			<p>
-				<table border="0">
+				<table class="studylist">
+					<tr>
+						<th>Study</th>
+						<th>Series</th>
+						<th>Image</th>
+						<th colspan="2">View</th>
+					</tr>
 					<xsl:apply-templates select="Study">
 						<xsl:sort select="@name"/>
 					</xsl:apply-templates>
@@ -62,10 +69,10 @@
 		<td>
 			<xsl:value-of select="@name"/>
 		</td>
-		<td>
+		<td class="center">
 			<input type="button" onclick="window.open('{$url}/elements?path={@path}','elements')" value="Elements"/>
 		</td>
-		<td>
+		<td class="center">
 			<input type="button" onclick="window.open('{$url}/image?path={@path}','image')" value="Image"/>
 		</td>
 	</tr>

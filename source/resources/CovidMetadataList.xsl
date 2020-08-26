@@ -11,7 +11,7 @@
 	<html>
 		<head>
 			<title>QIC - Metadata List</title>
-			<link rel="Stylesheet" type="text/css" media="all" href="/BaseStyles.css"></link>
+			<link rel="Stylesheet" type="text/css" media="all" href="/qicstyles.css"></link>
 			<style>
 				table {margin:0px; padding:0px;}
 				td {font-family:sans-serif; text-align:left;}
@@ -21,6 +21,7 @@
 			</style>
 		</head>
 		<body>
+		<a href="/qic"><h2>Open-QIC</h2></a>
 		<center>
 			<h1>QIC Metadata List</h1>
 			<p>
