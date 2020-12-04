@@ -39,7 +39,7 @@
 							<xsl:value-of select="PatientID"/>
 						</td>
 						<td class="center">
-							<xsl:value-of select="CovidPlus"/>
+							<xsl:value-of select="CovidPositive"/>
 						</td>
 						<td class="center">
 							<xsl:value-of select="PatientAge"/>
